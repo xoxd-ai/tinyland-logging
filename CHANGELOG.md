@@ -1,5 +1,36 @@
 # Changelog
 
+## 1.2.0 (2026-10-09)
+
+Minor release: one additive subpath export. The toolchain and stack are the
+same as 1.0.0 (TypeScript 7.0.2, vitest 5.0.3), so this is not a major bump.
+
+### Added
+
+- `@tummycrypt/tinyland-logging/admin-audit`: the SvelteKit admin action audit
+  logger formerly published as `@tummycrypt/tinyland-admin-audit` 0.2.x
+  (registry module `tummycrypt_tinyland_admin_audit`, now retired). The API is
+  unchanged: `configureAdminAudit`, `getAdminAuditConfig`,
+  `resetAdminAuditConfig`, `extractClientContext`, `calculateChangedFields`,
+  `logAdminAction`, `logAdminActionFailure`, `logUserManagement`,
+  `logPermissionChange`, `logContentManagement` and the `Logger`,
+  `AuditRequestEvent`, `AdminAuditPackageConfig`, `AdminAction`,
+  `ResourceType`, `DeviceType`, `AdminAuditLog` and `AdminAuditOptions` types.
+  It is a subpath, not part of the root entry, because the root already
+  exports a different `logAdminAction` (the flat file logger). The root entry
+  and the other subpaths are unchanged.
+
+### Migration
+
+1. Re-pin: `bazel_dep(name = "tummycrypt_tinyland_logging", version = "1.2.0")`
+   and pin the registry commit that carries it.
+2. Replace `@tummycrypt/tinyland-admin-audit` imports (and `vi.mock` targets)
+   with `@tummycrypt/tinyland-logging/admin-audit`, then drop the
+   `tummycrypt_tinyland_admin_audit` bazel_dep and its `npm_link_package`.
+3. Runtime behaviour is identical, including the default configuration
+   (console logger, identity IP hash, `unknown` device type) until
+   `configureAdminAudit` is called.
+
 ## 1.1.0 (2026-10-09)
 
 Minor release: one additive subpath export. The toolchain and stack are the
