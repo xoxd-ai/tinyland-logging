@@ -1,5 +1,32 @@
 # Changelog
 
+## 1.1.0 (2026-10-09)
+
+Minor release: one additive subpath export. The toolchain and stack are the
+same as 1.0.0 (TypeScript 7.0.2, vitest 5.0.3), so this is not a major bump.
+
+### Added
+
+- `@tummycrypt/tinyland-logging/activity`: the file-based admin activity
+  logger formerly published as `@tummycrypt/tinyland-activity-logger` 0.2.x
+  (registry module `tummycrypt_tinyland_activity_logger`, now retired). The
+  API is unchanged: `AdminActivityLogger`, `getAdminActivityLogger`,
+  `resetAdminActivityLoggerInstance`, `logAdminAction`,
+  `configureActivityLogger`, `getActivityLoggerConfig`,
+  `resetActivityLoggerConfig` and the `ActivityLog`, `UserContext` and
+  `ActivityLoggerConfig` types. The root entry and `./a11y` are unchanged.
+
+### Migration
+
+1. Re-pin: `bazel_dep(name = "tummycrypt_tinyland_logging", version = "1.1.0")`
+   and pin the registry commit that carries it.
+2. Replace `@tummycrypt/tinyland-activity-logger` imports with
+   `@tummycrypt/tinyland-logging/activity`, then drop the
+   `tummycrypt_tinyland_activity_logger` bazel_dep and its
+   `npm_link_package`.
+3. Runtime behaviour is identical, including the default log path
+   (`content/auth/logs/admin-activity.json` under `process.cwd()`).
+
 ## 1.0.0 (2026-10-08)
 
 Major release under the 2026-10-08 estate uplift (RU1, RU6, RU8, RU10, RU13).
