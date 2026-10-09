@@ -11,6 +11,7 @@ admin audit logging, file-based admin activity logging and accessibility
 | `@tummycrypt/tinyland-logging` | structured and Loki loggers, admin file/flat audit loggers, configuration |
 | `@tummycrypt/tinyland-logging/a11y` | buffered accessibility logger (`a11yLogger`) and its configuration; formerly `@tummycrypt/tinyland-a11y-logger` |
 | `@tummycrypt/tinyland-logging/activity` | file-based admin activity logger (`AdminActivityLogger`, `logAdminAction`) with query and rotation, and its configuration; formerly `@tummycrypt/tinyland-activity-logger` |
+| `@tummycrypt/tinyland-logging/admin-audit` | SvelteKit admin action audit logging (`logAdminAction`, `logUserManagement`, ...) with GDPR IP hashing and device detection; formerly `@tummycrypt/tinyland-admin-audit` |
 
 ## Consuming (Bazel only)
 
@@ -18,7 +19,7 @@ This package is not published to npm. Consume it from
 [xoxd-ai/bazel-registry](https://github.com/xoxd-ai/bazel-registry):
 
 ```starlark
-bazel_dep(name = "tummycrypt_tinyland_logging", version = "1.1.0")
+bazel_dep(name = "tummycrypt_tinyland_logging", version = "1.2.0")
 ```
 
 ```starlark
