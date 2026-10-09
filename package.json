@@ -1,6 +1,7 @@
 {
   "name": "@tummycrypt/tinyland-logging",
-  "version": "0.2.2",
+  "version": "1.0.0",
+  "private": true,
   "description": "Structured logging with Loki integration, OTel trace correlation, admin audit logging, and accessibility (WCAG) Loki logging",
   "type": "module",
   "license": "Zlib AND LicenseRef-Tinyland-Proprietary",
@@ -29,13 +30,12 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "prepublishOnly": "pnpm build && pnpm check:package",
     "check:package": "publint"
   },
   "author": "Tinyland.dev",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tinyland-inc/tinyland-logging.git"
+    "url": "git+https://github.com/xoxd-ai/tinyland-logging.git"
   },
   "peerDependencies": {
     "@opentelemetry/api": "^1.0.0"
@@ -48,20 +48,16 @@
   "devDependencies": {
     "@opentelemetry/api": "^1.9.0",
     "@types/node": "^22.0.0",
-    "typescript": "^5.0.0",
-    "vitest": "^4.0.0",
-    "publint": "^0.3.18"
+    "publint": "^0.3.18",
+    "typescript": "7.0.2",
+    "vitest": "5.0.3"
   },
   "engines": {
     "node": ">=22.0.0"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "public"
-  },
   "packageManager": "pnpm@10.13.1",
-  "homepage": "https://github.com/tinyland-inc/tinyland-logging",
+  "homepage": "https://github.com/xoxd-ai/tinyland-logging",
   "bugs": {
-    "url": "https://github.com/tinyland-inc/tinyland-logging/issues"
+    "url": "https://github.com/xoxd-ai/tinyland-logging/issues"
   }
 }
