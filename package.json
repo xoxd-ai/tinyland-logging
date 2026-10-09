@@ -1,8 +1,8 @@
 {
   "name": "@tummycrypt/tinyland-logging",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
-  "description": "Structured logging with Loki integration, OTel trace correlation, admin audit logging, and accessibility (WCAG) Loki logging",
+  "description": "Structured logging with Loki integration, OTel trace correlation, admin audit and file-based admin activity logging, and accessibility (WCAG) Loki logging",
   "type": "module",
   "license": "Zlib AND LicenseRef-Tinyland-Proprietary",
   "main": "./dist/index.js",
@@ -16,6 +16,10 @@
     "./a11y": {
       "types": "./dist/a11y/index.d.ts",
       "import": "./dist/a11y/index.js"
+    },
+    "./activity": {
+      "types": "./dist/activity/index.d.ts",
+      "import": "./dist/activity/index.js"
     }
   },
   "files": [

@@ -45,7 +45,7 @@ npm_package(
         ":tinyland_logging",
     ],
     package = "@tummycrypt/tinyland-logging",
-    version = "1.0.0",
+    version = "1.1.0",
     visibility = ["//visibility:public"],
 )
 
