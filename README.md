@@ -1,8 +1,8 @@
 # @tummycrypt/tinyland-logging
 
 Structured logging with Loki integration, OpenTelemetry trace correlation,
-admin audit logging, file-based admin activity logging and accessibility
-(WCAG) Loki logging.
+admin audit logging, file-based admin activity logging, accessibility
+(WCAG) Loki logging and a DI-based tRPC logging middleware.
 
 ## Entry points
 
@@ -12,6 +12,7 @@ admin audit logging, file-based admin activity logging and accessibility
 | `@tummycrypt/tinyland-logging/a11y` | buffered accessibility logger (`a11yLogger`) and its configuration; formerly `@tummycrypt/tinyland-a11y-logger` |
 | `@tummycrypt/tinyland-logging/activity` | file-based admin activity logger (`AdminActivityLogger`, `logAdminAction`) with query and rotation, and its configuration; formerly `@tummycrypt/tinyland-activity-logger` |
 | `@tummycrypt/tinyland-logging/admin-audit` | SvelteKit admin action audit logging (`logAdminAction`, `logUserManagement`, ...) with GDPR IP hashing and device detection; formerly `@tummycrypt/tinyland-admin-audit` |
+| `@tummycrypt/tinyland-logging/middleware` | tRPC-compatible `loggingMiddleware` and component loggers (`createLogger`, `createScopedLogger`) over an injected `Logger` (`configure`, no-op until configured); formerly `@tummycrypt/tinyland-logging-middleware` |
 
 ## Consuming (Bazel only)
 
@@ -19,7 +20,7 @@ This package is not published to npm. Consume it from
 [xoxd-ai/bazel-registry](https://github.com/xoxd-ai/bazel-registry):
 
 ```starlark
-bazel_dep(name = "tummycrypt_tinyland_logging", version = "1.2.0")
+bazel_dep(name = "tummycrypt_tinyland_logging", version = "1.3.0")
 ```
 
 ```starlark
