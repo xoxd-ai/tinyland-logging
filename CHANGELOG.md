@@ -1,5 +1,35 @@
 # Changelog
 
+## 1.3.0 (2026-10-10)
+
+Minor release: one additive subpath export. The toolchain and stack are the
+same as 1.0.0 (TypeScript 7.0.2, vitest 5.0.3), so this is not a major bump.
+
+### Added
+
+- `@tummycrypt/tinyland-logging/middleware`: the tRPC-compatible logging
+  middleware with DI-based logger injection formerly published as
+  `@tummycrypt/tinyland-logging-middleware` 0.2.x (registry module
+  `tummycrypt_tinyland_logging_middleware`, now retired). The API is
+  unchanged: `configure`, `getConfig`, `resetConfig`, `getNoopLogger`,
+  `loggingMiddleware`, `createLogger`, `createScopedLogger` and the
+  `LogLevel`, `LogContext`, `Logger` and `LoggingMiddlewareConfig` types.
+  It is a subpath, not part of the root entry, because the root already
+  exports different `LogLevel`, `LogContext`, `getNoopLogger` and
+  `createScopedLogger`. The root entry and the other subpaths are unchanged.
+
+### Migration
+
+1. Re-pin: `bazel_dep(name = "tummycrypt_tinyland_logging", version = "1.3.0")`
+   and pin the registry commit that carries it.
+2. Replace `@tummycrypt/tinyland-logging-middleware` imports (and `vi.mock`
+   targets) with `@tummycrypt/tinyland-logging/middleware`, then drop the
+   `tummycrypt_tinyland_logging_middleware` bazel_dep and its
+   `npm_link_package`.
+3. Runtime behaviour is identical: the module-level configuration is a no-op
+   logger until `configure({ logger })` is called, and this subpath keeps its
+   own configuration, separate from the root entry's.
+
 ## 1.2.0 (2026-10-09)
 
 Minor release: one additive subpath export. The toolchain and stack are the
