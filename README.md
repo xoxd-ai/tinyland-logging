@@ -38,6 +38,14 @@ npm_link_package(
 pnpm install
 pnpm typecheck
 pnpm test
+```
+
+CI (`.github/workflows/ci.yml`) runs these checks and builds `//:pkg` and
+`//:test`. That is the qualifying run. A local Bazel run is local,
+non-qualifying. `.bazelrc` sets `startup --max_idle_secs=120`, so its server
+exits after 120 s idle:
+
+```sh
 bazel build //:pkg && bazel test //...
 ```
 

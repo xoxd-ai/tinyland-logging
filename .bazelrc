@@ -1,3 +1,8 @@
+# Bound any client server a build or test starts (TIN-5770, R470). The default
+# idle time is 3 h. A home rc or wrapper may pass another value on the command
+# line, which wins.
+startup --max_idle_secs=120
+
 common --enable_bzlmod
 
 build --jobs=auto
@@ -13,5 +18,14 @@ build:ci --color=no
 build:ci --curses=no
 build:ci --noshow_loading_progress
 test:ci --test_output=errors
+
+# No remote cache or executor is configured, so a local run is local,
+# non-qualifying (TIN-5770, R471). A remote profile attached later must never
+# fall back to local execution.
+build --remote_local_fallback=false
+
+# Endpoint-free hook for a GloriousFlywheel lane fragment. The file does not
+# exist until this repo enrolls. try-import skips a missing file.
+try-import %workspace%/.bazelrc.flywheel
 
 try-import %workspace%/user.bazelrc

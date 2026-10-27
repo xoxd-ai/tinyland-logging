@@ -1,9 +1,12 @@
 """
 BUILD.bazel for @tummycrypt/tinyland-logging.
 
-Dual-mode build: works with both pnpm (standalone) and Bazel (CI/production).
-  Standalone: cd packages/tinyland-logging && pnpm build
-  Monorepo:   bazel build //packages/tinyland-logging/...
+Consumers take this package as a Bazel module from the xoxd-ai bazel-registry.
+pnpm scripts remain for local diagnostics (pnpm build, pnpm test).
+
+CI (.github/workflows/ci.yml) runs the pnpm checks and builds //:pkg and
+//:test. That is the qualifying run. A local bazel build or test is local,
+non-qualifying, and .bazelrc stops its server after 120 s idle (TIN-5770).
 """
 
 load("@aspect_rules_js//npm:defs.bzl", "npm_package")
