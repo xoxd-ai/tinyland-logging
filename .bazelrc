@@ -1,6 +1,6 @@
 # Bound any client server a build or test starts (TIN-5770, R470). The default
-# idle time is 3 h. A home rc or wrapper may pass another value on the command
-# line, which wins.
+# idle time is 3 h. A later rc (~/.bazelrc, user.bazelrc) or a command-line
+# --max_idle_secs overrides this value.
 startup --max_idle_secs=120
 
 common --enable_bzlmod
